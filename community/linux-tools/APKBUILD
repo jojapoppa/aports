@@ -44,7 +44,8 @@ _make_tools() {
 }
 
 build() {
-	_make_tools perf cpupower gpio iio tmon
+	# _make_tools perf cpupower gpio iio tmon
+	_make_tools cpupower gpio iio tmon
 }
 
 package() {

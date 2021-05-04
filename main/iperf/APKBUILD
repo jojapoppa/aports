@@ -15,6 +15,7 @@ source="https://sourceforge.net/projects/iperf2/files/iperf-$pkgver.tar.gz
 	long-to-time-t.patch
 	"
 build() {
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

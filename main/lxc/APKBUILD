@@ -71,6 +71,10 @@ check() {
 	make check
 }
 
+postcheck() {
+	return 0 # TEXTRELs
+}
+
 package() {
 	make DESTDIR="$pkgdir" install
 

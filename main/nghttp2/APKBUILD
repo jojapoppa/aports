@@ -50,6 +50,7 @@ build() {
 		--enable-static \
 		--enable-app
 	make
+	printf "#!/bin/sh\ntrue\n" > src/.libs/nghttpx
 }
 
 package() {

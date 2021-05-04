@@ -63,6 +63,7 @@ build() {
 		x86)		_target="linux-elf" ;;
 		x86_64)		_target="linux-x86_64"; _optflags="enable-ec_nistp_64_gcc_128" ;;
 		s390x) 		_target="linux64-s390x";;
+		riscv64) 	_target="linux-generic64";;
 		*)		msg "Unable to determine architecture from (CARCH=$CARCH)" ; return 1 ;;
 	esac
 
@@ -74,7 +75,7 @@ build() {
 		--libdir=lib \
 		--openssldir=/etc/ssl \
 		shared no-zlib $_optflags \
-		no-async no-comp no-idea no-mdc2 no-rc5 no-ec2m \
+		no-asm no-threads no-async no-comp no-idea no-mdc2 no-rc5 no-ec2m \
 		no-sm2 no-sm4 no-ssl2 no-ssl3 no-seed \
 		no-weak-ssl-ciphers \
 		$CPPFLAGS $CFLAGS $LDFLAGS -Wa,--noexecstack

@@ -15,6 +15,7 @@ source="https://www.x.org/releases/individual/lib/libXrender-$pkgver.tar.bz2"
 builddir="$srcdir"/libXrender-$pkgver
 build() {
 	cd "$builddir"
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

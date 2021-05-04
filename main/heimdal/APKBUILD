@@ -22,6 +22,7 @@ source="https://github.com/heimdal/heimdal/releases/download/heimdal-$pkgver/hei
 	005_all_heimdal-suid_fix.patch
 	heimdal_missing-include.patch
 	CVE-2018-16860.patch
+        autoconf-2.70.patch
 	"
 
 # secfixes:
@@ -54,7 +55,8 @@ build() {
 		--with-readline-include=/usr/include/readline \
 		--with-sqlite3=/usr \
 		--without-openssl \
-		--with-db-type-preference=
+		--with-db-type-preference= \
+		--disable-otp
 
 	# make sure we use system version
 	rm -r lib/sqlite lib/com_err
@@ -126,4 +128,5 @@ sha512sums="6660939b5a36ce36310721a08a089fb671d1e3d2e8ac74ea4775bfa5f8f772d32de8
 abee8390632fa775e74900d09e5c72b02fe4f9616b43cc8d0a76175486ed6d4707fb3ce4d06ceb09b0e8d1384e037c3cff6525e11def0122c35c32eebd0d196f  heimdal-kpasswdd.initd
 2a6b20588a86a9ea3c35209b96ef2da0b39bc3112aec1505e69a60efc9ffb9ddc1d0dbdfaf864142e9d2f81da3d2653de56d6ffa01871c20fde17e4642625c56  005_all_heimdal-suid_fix.patch
 e89efdc942c512363aac1d9797c6bf622324e9200e282bc5ed680300b9e1b39a4ea20f059cdac8f22f972eb0af0e625fd41f267ebcafcfec0aaa81192aff79c1  heimdal_missing-include.patch
-36738795eb3478b55790bf1927f85a421b13b6b47dcc273daeb6630c39a4e1c1258148fa0e9f004ae59a9ac89caf54cb25efedb417e852e42a2c32d02e43fd56  CVE-2018-16860.patch"
+36738795eb3478b55790bf1927f85a421b13b6b47dcc273daeb6630c39a4e1c1258148fa0e9f004ae59a9ac89caf54cb25efedb417e852e42a2c32d02e43fd56  CVE-2018-16860.patch
+3fcccad7591601353412b10b5a091fb25a141b6e038131b7507abacd1310505caa87ba9f1a782d6eaf2624bb8e20c269d707f8cd4143f49f3284d7fbb172808a  autoconf-2.70.patch"

@@ -5,7 +5,7 @@ pkgver=1.5.0
 pkgrel=1
 pkgdesc="Portable and efficient C programming interface (API) to determine the call-chain of a program"
 url="https://www.nongnu.org/libunwind/"
-arch="all"
+arch="all !riscv64"
 license="MIT"
 options="!check" # v1.4.0 12 tests failing - https://github.com/libunwind/libunwind/issues/164
 depends_dev="libucontext-dev"
@@ -17,6 +17,7 @@ source="https://download.savannah.gnu.org/releases/libunwind/libunwind-$pkgver.t
 	ppc64-musl.patch
 	fix-ppc64-libdir.patch
 	fix-libunwind-pc-in.patch
+	fix-riscv64.patch
 	"
 
 prepare() {
@@ -50,4 +51,5 @@ de3cefd8a2fa9ae3eabf052cb94a1fdde4f9b7e85af839220592269f7a885470572f67ecf6d77312
 a1751b80f2c42a741f0a7778f758c7afe42653bf61a353edf38182d731008ed7bd0b8a41bf466aa83275b22241bfcd4f6051055489e3cc87fcd7dd4488bc089d  musl-mips-fix.patch
 3b59620c758784faa6d66c8a0a2e49ced743b7ebff6a7e461e40aea653ef9f8cbd8948fb766c63acdd625cb506601c102f133074cef9ef150e9bb8b81584fe9d  ppc64-musl.patch
 8b66dc1d62e9fd120d136daed743c294d3d586b3da9c527fb65accc3db4fe810e87a176f0a0134c43d913cc33ddfb634039842a289c132a087f3700ee407fe50  fix-ppc64-libdir.patch
-52b568846db7adb50a181f17635e53c8a6d99d6d13c3d35fd8c9a5de5ec0a1ad18d8462c4ae4483d413d4b5aa7375017c36b5cb49805b6f67d96cffafbd02548  fix-libunwind-pc-in.patch"
+52b568846db7adb50a181f17635e53c8a6d99d6d13c3d35fd8c9a5de5ec0a1ad18d8462c4ae4483d413d4b5aa7375017c36b5cb49805b6f67d96cffafbd02548  fix-libunwind-pc-in.patch
+30912218c405bfff5391c67011c4ecead3a7babfbbb07d144c6e6444bd61bd45cb0f6b4d0ebe865d3e589168417502d29c6b8d848cd85bc075c241919472a623  fix-riscv64.patch"

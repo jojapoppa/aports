@@ -23,15 +23,15 @@ replaces="libstdc++ binutils"
 
 : "${LANG_CXX:=true}"
 : "${LANG_D:=true}"
-: "${LANG_OBJC:=true}"
+: "${LANG_OBJC:=false}"
 : "${LANG_GO:=true}"
-: "${LANG_FORTRAN:=true}"
-: "${LANG_ADA:=true}"
+: "${LANG_FORTRAN:=false}"
+: "${LANG_ADA:=false}"
 
 _libgomp=true
 _libgcc=true
 _libatomic=true
-_libitm=true
+_libitm=false
 
 if [ "$CHOST" != "$CTARGET" ]; then
 	if [ "$BOOTSTRAP" = nolibc ]; then
@@ -93,7 +93,7 @@ fi
 
 # GDC hasn't been ported to PowerPC
 # See libphobos/configure.tgt in GCC sources for supported targets
-[ "$CARCH" = ppc64le ] && LANG_D=false
+[ "$CARCH" = ppc64le -o "$CARCH" = riscv64 ] && LANG_D=false
 
 # libitm has TEXTRELs in ARM build, so disable for now
 case "$CTARGET_ARCH" in

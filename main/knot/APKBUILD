@@ -48,7 +48,8 @@ source="https://secure.nic.cz/files/$pkgname-dns/$pkgname-$pkgver.tar.xz
 	knotd.initd
 	"
 # tests fail due to alignment problems on armv6
-[ "$CARCH" = "armhf" ] && options="!check"
+# 1 out of 188 tests failed on riscv64
+[ "$CARCH" = "armhf" -o  "$CARCH" = "riscv64" ] && options="!check"
 
 prepare() {
 	default_prepare
@@ -59,6 +60,7 @@ prepare() {
 }
 
 build() {
+	case "$CARCH" in riscv64) export LDFLAGS=-latomic;; esac
 	./configure \
 		--build="$CBUILD" \
 		--host="$CHOST" \

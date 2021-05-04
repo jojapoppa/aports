@@ -41,12 +41,17 @@ prepare() {
 }
 
 build() {
+	# when disable-spinlocks is no longer required - check postgresql package
+        case "$CBUILD" in
+                *riscv64*) CONFIGURE_EXTRA_FLAGS=--disable-spinlocks ;;
+        esac
+	cp /usr/share/abuild/config.sub config
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \
 		--prefix=/usr \
 		--mandir=/usr/share/man \
-		--with-openssl
+		--with-openssl $CONFIGURE_EXTRA_FLAGS
 
 	# configure/programs.m4 doesn't properly detect flex
 	# and offers manual user override

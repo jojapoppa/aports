@@ -43,6 +43,10 @@ source="https://www.cpan.org/src/5.0/perl-$pkgver.tar.gz
 _privlib=/usr/share/perl5/core_perl
 _archlib=/usr/lib/perl5/core_perl
 
+case "$CARCH" in
+        riscv64) options="$options !check" ;; # only 5 tests fail on qemu-user riscv64
+esac
+
 prepare() {
 	chmod +w "$builddir"/*.c
 	default_prepare

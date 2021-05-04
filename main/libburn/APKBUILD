@@ -15,6 +15,7 @@ subpackages="$pkgname-dev $pkgname-doc"
 source="http://files.libburnia-project.org/releases/libburn-${_ver}$_pver.tar.gz"
 
 build() {
+	 cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

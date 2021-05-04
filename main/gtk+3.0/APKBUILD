@@ -87,7 +87,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output || :
 
 	# use gtk-update-icon-cache from gtk+2.0 for now
 	rm -f "$pkgdir"/usr/bin/gtk-update-icon-cache

@@ -60,7 +60,7 @@ fi
 if [ ! -d "$CBUILDROOT" ]; then
 	msg "Creating sysroot in $CBUILDROOT"
 	mkdir -p "$CBUILDROOT/etc/apk/keys"
-	cp -a /etc/apk/keys/* "$CBUILDROOT/etc/apk/keys"
+	cp -a /etc/apk/keys/* ~/.abuild/*.pub "$CBUILDROOT/etc/apk/keys"
 	${SUDO_APK} add --quiet --initdb --arch $TARGET_ARCH --root $CBUILDROOT
 fi
 
@@ -88,6 +88,7 @@ CTARGET=$TARGET_ARCH BOOTSTRAP=nobase APKBUILD=$(apkbuildname gcc) abuild -r
 
 # Cross build-base
 CTARGET=$TARGET_ARCH BOOTSTRAP=nobase APKBUILD=$(apkbuildname build-base) abuild -r
+ITER=0
 
 msg "Cross building base system"
 
@@ -96,9 +97,10 @@ EXTRADEPENDS_TARGET="libgcc libstdc++ musl-dev"
 
 # ordered cross-build
 for PKG in fortify-headers linux-headers musl libc-dev pkgconf zlib \
-	   openssl ca-certificates libmd libbsd libtls-standalone busybox busybox-initscripts binutils make \
+	   openssl ca-certificates libmd \
+	   gmp mpfr4 mpc1 isl22 cloog libucontext binutils gcc \
+	   libbsd libtls-standalone busybox busybox-initscripts make \
 	   apk-tools file \
-	   gmp mpfr4 mpc1 isl22 cloog libucontext gcc \
 	   openrc alpine-conf alpine-baselayout alpine-keys alpine-base patch build-base \
 	   attr libcap acl fakeroot tar \
 	   lzip abuild ncurses libedit openssh \
@@ -107,16 +109,30 @@ for PKG in fortify-headers linux-headers musl libc-dev pkgconf zlib \
 	   community/go libffi community/ghc \
 	   brotli libev c-ares cunit nghttp2 curl \
 	   pcre libssh2 community/http-parser community/libgit2 \
-	   libxml2 llvm10 community/rust \
-	   $KERNEL_PKG ; do
+	   libxml2 pax-utils llvm11 community/rust \
+	   autoconf m4 help2man bison curl expat libarchive  libuv \
+	   sqlite chrpath readline automake autoconf-archive bash \
+	   meson libunistring flex gettext isl  samurai gperf util-linux \
+	   npth grep docbook-xsl yaml rarian db fts linenoise xmlto argp-standalone \
+	   diffutils  sed  libidn2   nasm byacc gengetopt libsodium asciidoc gzip \
+	   yajl openresolv font-util libwebp ivykis lz4 cppunit gawk cmph jpeg \
+	   re2c libnet itstool scons iniparser libestr libfastjson liblogging \
+	   libmaxminddb libart-lgpl libao libtasn1 libsrtp libidn fribidi yasm \
+	   unzip cmocka cjson findutils  liblockfile ; do
 
-	EXTRADEPENDS_TARGET="$EXTRADEPENDS_TARGET" \
+       if [ "$ITER" -eq "${2:-1000}" ]; then exit 0; else ITER=$(( ITER + 1 )); fi 
+	EXTRADEPENDS_TARGET="$EXTRADEPENDS_TARGET"  EXTRADEPENDS_BUILD="libatomic gcc-$TARGET_ARCH g++-$TARGET_ARCH" \
 	CHOST=$TARGET_ARCH BOOTSTRAP=bootimage APKBUILD=$(apkbuildname $PKG) abuild -r
 
 	case "$PKG" in
 	fortify-headers | libc-dev)
 		# Additional implicit dependencies once built
 		EXTRADEPENDS_TARGET="$EXTRADEPENDS_TARGET $PKG"
+		;;
+	gcc)
+		# After gcc full build, we get to have libatomic that a low of packages require
+		# The reason we need gcc as well is because .so is there, not in libatomic
+		EXTRADEPENDS_TARGET="libatomic gcc $EXTRADEPENDS_TARGET"
 		;;
 	build-base)
 		# After build-base, that alone is sufficient dependency in the target

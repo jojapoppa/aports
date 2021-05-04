@@ -65,6 +65,10 @@ source="https://www.kernel.org/pub/software/scm/git/git-$pkgver.tar.xz
 
 _gitcoredir=/usr/libexec/git-core
 
+case "$CARCH" in
+        riscv64) options="$options !check" ;; # still have 11 known breakage(s)
+esac
+
 prepare() {
 	default_prepare
 

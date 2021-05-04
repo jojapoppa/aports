@@ -12,6 +12,7 @@ subpackages="$pkgname-dev $pkgname-doc xorriso:_xorriso"
 source="http://files.libburnia-project.org/releases/libisoburn-$pkgver.tar.gz"
 
 build() {
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

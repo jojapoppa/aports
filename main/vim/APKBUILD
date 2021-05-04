@@ -48,7 +48,7 @@ build() {
 		--enable-gui=no \
 		--with-lua-prefix=/usr/lua5.3 \
 		--with-compiledby="Alpine Linux"
-	make
+	make LDFLAGS='-Wl,-O1,--sort-common -L/usr/local/lib -Wl,--as-needed'
 	cd "$builddir"-gvim
 	./configure \
 		--build=$CBUILD \
@@ -62,7 +62,7 @@ build() {
 		--enable-gui=gtk3 \
 		--with-lua-prefix=/usr/lua5.3 \
 		--with-compiledby="Alpine Linux"
-	make
+	make LDFLAGS='-Wl,-O1,--sort-common -L/usr/local/lib -Wl,--as-needed'
 }
 
 check() {

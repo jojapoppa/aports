@@ -27,6 +27,7 @@ builddir="$srcdir/Botan-$pkgver"
 
 case $CARCH in
 	ppc64le|armhf|armv7) options="$options !check" ;; # 3 tests timeout
+	riscv64) options="$options !check" ;; # a few tests timeout
 esac
 
 build() {

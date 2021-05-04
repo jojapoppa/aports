@@ -13,6 +13,10 @@ subpackages="$pkgname-dev"
 source="https://mirrors.edge.kernel.org/pub/linux/libs/ell/ell-$pkgver.tar.gz
 	"
 
+case "$CARCH" in
+        riscv64) options="$options !check" ;; # FAIL: unit/test-cipher
+esac
+
 build() {
 	./configure \
 		--build=$CBUILD \

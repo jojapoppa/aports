@@ -124,7 +124,13 @@ source="https://downloads.mariadb.org/interstitial/mariadb-$pkgver/source/mariad
 # Available plugins https://mariadb.com/kb/en/library/list-of-plugins/
 # All cmake configuration options can be displayed with: cmake ../server -LH
 build() {
-	cmake . -DBUILD_CONFIG=mysql_release \
+	# https://github.com/riscv/riscv-gnu-toolchain/issues/183#issuecomment-253721765
+	export LDFLAGS=-latomic
+	sed -ie 's#END(#ENDIF(#' libmariadb/cmake/ConnectorName.cmake
+	cmake . -DCMAKE_C_STANDARD_LIBRARIES=-latomic \
+		-DCMAKE_CXX_STANDARD_LIBRARIES=-latomic \
+		-DCMAKE_SHARED_LINKER_FLAGS=-latomic \
+		-DBUILD_CONFIG=mysql_release \
 		-DCMAKE_BUILD_TYPE=MinSizeRel \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DSYSCONFDIR=/etc \
@@ -193,7 +199,7 @@ build() {
 	# print config options to log
 	cmake -L
 
-	make
+	make VERBOSE=1
 }
 
 check() {

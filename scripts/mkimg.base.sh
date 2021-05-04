@@ -221,6 +221,7 @@ section_grub_efi() {
 	local _format _efi
 	case "$ARCH" in
 	aarch64)_format="arm64-efi";  _efi="bootaa64.efi" ;;
+	riscv64)_format="riscv64-efi";_efi="bootriscv64.efi" ;;
 	arm*)	_format="arm-efi";    _efi="bootarm.efi"  ;;
 	x86)	_format="i386-efi";   _efi="bootia32.efi" ;;
 	x86_64) _format="x86_64-efi"; _efi="bootx64.efi"  ;;

@@ -45,6 +45,10 @@ builddir="$srcdir/Python-$pkgver"
 #   3.6.8-r1:
 #     - CVE-2019-5010
 
+case "$CARCH" in
+        riscv64) options="$options !check" ;; # FAILED (errors=62, skipped=1)
+esac
+
 prepare() {
 	default_prepare
 

@@ -21,6 +21,7 @@ builddir="$srcdir/$_pkgname-$pkgver"
 
 build() {
 	CFLAGS="$CFLAGS -D_GNU_SOURCE"
+	cp /usr/share/abuild/config.sub config
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

@@ -11,6 +11,7 @@ source="https://alioth-archive.debian.org/releases/chrpath/chrpath/$pkgver/chrpa
 
 build() {
 	cd "$builddir"
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

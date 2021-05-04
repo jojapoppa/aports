@@ -19,6 +19,7 @@ prepare() {
 }
 
 build() {
+	cp /usr/share/abuild/config.sub .
 	CFLAGS="$CFLAGS -fPIC" \
 	./configure \
 		--build=$CBUILD \

@@ -4,7 +4,7 @@ pkgver=0.17
 pkgrel=7
 pkgdesc="A tool to display bandwidth usage on an interface"
 url="http://www.ex-parrot.com/~pdw/iftop/"
-arch="all"
+arch="all !riscv64" # qemu:handle_cpu_signal received signal outside vCPU context @ pc=0x6018cb1c during configure
 license="GPL-2.0"
 depends=""
 makedepends="libpcap-dev>=1 ncurses-dev"
@@ -19,6 +19,7 @@ prepare() {
 
 build() {
 	cd "$_builddir"
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

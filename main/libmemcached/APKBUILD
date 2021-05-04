@@ -4,7 +4,7 @@ pkgver=1.0.18
 pkgrel=4
 pkgdesc="Client library and command line tools for memcached server"
 url="https://libmemcached.org/libMemcached.html"
-arch="all"
+arch="all !riscv64"
 license="BSD-3-Clause"
 options="!check" # tests are broken
 depends_dev="cyrus-sasl-dev"
@@ -15,6 +15,7 @@ source="https://launchpad.net/libmemcached/${pkgver%.*}/$pkgver/+download/libmem
 	musl-fixes.patch"
 
 build() {
+	cp /usr/share/abuild/config.sub build-aux
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

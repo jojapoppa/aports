@@ -7,7 +7,7 @@ _rel=0
 
 _flavor=${FLAVOR:-lts}
 _kpkg=linux-$_flavor
-_kver=5.10.33
+_kver=5.10.32
 _krel=0
 
 _kpkgver="$_kver-r$_krel"
@@ -21,8 +21,9 @@ pkgdesc="Iptables extensions kernel modules"
 url="https://inai.de/projects/xtables-addons/"
 arch="all !armhf !mips64"
 license="GPL-2.0"
-depends="$_kpkg=$_kpkgver"
-makedepends="$_kpkg-dev=$_kpkgver iptables-dev linux-headers"
+# depends="$_kpkg=$_kpkgver"
+# makedepends="$_kpkg-dev=$_kpkgver iptables-dev linux-headers"
+makedepends="iptables-dev linux-headers"
 install_if="$_kpkg=$_kpkgver $_name"
 source="https://inai.de/files/xtables-addons/xtables-addons-$_ver.tar.xz"
 builddir="$srcdir/$_name-$_ver"

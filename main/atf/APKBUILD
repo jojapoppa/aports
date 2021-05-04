@@ -11,6 +11,7 @@ subpackages="$pkgname-static $pkgname-dev $pkgname-doc"
 source="https://github.com/jmmv/atf/releases/download/atf-$pkgver/atf-$pkgver.tar.gz"
 
 build() {
+	cp /usr/share/abuild/config.sub admin
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

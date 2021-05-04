@@ -19,6 +19,7 @@ source="https://www.infradead.org/~tgr/libnl/files/$pkgname-$pkgver.tar.gz
 case "$CARCH" in
 s390x) options="$options !check";;
 mips*) options="$options !check";;
+riscv64) options="$options !check";;
 esac
 
 build() {
