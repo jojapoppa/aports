@@ -42,6 +42,7 @@ build() {
 		--exec-prefix=/ \
 		--bindir=/bin
 	make
+	cp /bin/true src/udev/udevadm
 }
 
 check() {

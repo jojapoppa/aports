@@ -14,6 +14,7 @@ source="https://www.netfilter.org/projects/$pkgname/files/$pkgname-$pkgver.tar.b
 	musl-fix-headers.patch"
 
 build() {
+	cp /usr/share/abuild/config.sub build-aux
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

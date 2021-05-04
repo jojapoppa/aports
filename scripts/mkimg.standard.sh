@@ -6,9 +6,9 @@ profile_standard() {
 	profile_base
 	profile_abbrev="std"
 	image_ext="iso"
-	arch="aarch64 x86 x86_64 ppc64le s390x"
+	arch="aarch64 riscv64 x86 x86_64 ppc64le s390x"
 	output_format="iso"
-	kernel_addons="xtables-addons"
+	#kernel_addons="xtables-addons"
 	case "$ARCH" in
 	s390x)
 		apks="$apks s390-tools"
@@ -29,15 +29,16 @@ profile_extended() {
 		Suitable for routers and servers.
 		Runs from RAM.
 		Includes AMD and Intel microcode updates."
-	arch="x86 x86_64"
-	kernel_addons="xtables-addons zfs"
-	boot_addons="amd-ucode intel-ucode"
-	initrd_ucode="/boot/amd-ucode.img /boot/intel-ucode.img"
+	arch="x86 x86_64 riscv64"
+	# kernel_addons="xtables-addons zfs"
+	# boot_addons="amd-ucode intel-ucode"
+	# initrd_ucode="/boot/amd-ucode.img /boot/intel-ucode.img"
+	# xtables-addons
 	apks="$apks
 		ethtool hwids lftp links doas
 		logrotate lua5.3 lsof lm_sensors lxc lxc-templates nano
 		pciutils screen strace sudo tmux
-		usbutils v86d vim xtables-addons curl
+		usbutils v86d vim curl
 
 		acct arpon arpwatch awall bridge-utils bwm-ng
 		ca-certificates conntrack-tools cutter cyrus-sasl dhcp
@@ -74,7 +75,7 @@ profile_virt() {
 	desc="Similar to standard.
 		Slimmed down kernel.
 		Optimized for virtual systems."
-	arch="aarch64 x86 x86_64"
+	arch="aarch64 riscv64 x86 x86_64"
 	kernel_addons=
 	kernel_flavors="virt"
 	kernel_cmdline="console=tty0 console=ttyS0,115200"

@@ -23,15 +23,15 @@ replaces="libstdc++ binutils"
 
 : "${LANG_CXX:=true}"
 : "${LANG_D:=true}"
-: "${LANG_OBJC:=true}"
+: "${LANG_OBJC:=false}"
 : "${LANG_GO:=true}"
-: "${LANG_FORTRAN:=true}"
-: "${LANG_ADA:=true}"
+: "${LANG_FORTRAN:=false}"
+: "${LANG_ADA:=false}"
 
 _libgomp=true
 _libgcc=true
 _libatomic=true
-_libitm=true
+_libitm=false
 
 if [ "$CHOST" != "$CTARGET" ]; then
 	if [ "$BOOTSTRAP" = nolibc ]; then

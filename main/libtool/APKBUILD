@@ -22,6 +22,7 @@ builddir="$srcdir"/$pkgname-$pkgver
 
 build() {
 	cd "$builddir"
+	cp /usr/share/abuild/config.sub build-aux	
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

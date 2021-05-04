@@ -15,7 +15,7 @@ checkdepends="kyua atf"
 build() {
 	./configure \
 		--build=$CBUILD \
-		--host=$CHOST \
+		--host=riscv64-linux-musl \
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--mandir=/usr/share/man \

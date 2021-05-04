@@ -15,6 +15,7 @@ source="https://downloads.sourceforge.net/libusb/$pkgname-$pkgver.tar.bz2
 
 build() {
 	cd "$builddir"
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

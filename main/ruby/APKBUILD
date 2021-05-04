@@ -97,7 +97,7 @@ done
 
 prepare() {
 	default_prepare
-	autoconf
+	# autoconf
 
 	# v2.7.1 - Of all the bootstraptest only test_fiber fails on s390x:
 	# test_fiber.rb bootstraptest.tmp.rb:8: [BUG] vm_call_cfunc: cfp consistency error (0x000003ffb63fefb0, 0x000003ffb42f5f58)
