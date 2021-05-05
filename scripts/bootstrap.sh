@@ -110,6 +110,15 @@ for PKG in fortify-headers linux-headers musl libc-dev pkgconf zlib \
 	   brotli libev c-ares cunit nghttp2 curl \
 	   pcre libssh2 community/http-parser community/libgit2 \
 	   libxml2 pax-utils llvm11 community/rust \
+	   autoconf m4 help2man bison curl expat libarchive  libuv \
+	   sqlite chrpath readline automake autoconf-archive bash \
+	   meson libunistring flex gettext isl  samurai gperf util-linux \
+	   npth grep docbook-xsl yaml rarian db fts linenoise xmlto argp-standalone \
+	   diffutils  sed  libidn2   nasm byacc gengetopt libsodium asciidoc gzip \
+	   yajl openresolv font-util libwebp ivykis lz4 cppunit gawk cmph jpeg \
+	   re2c libnet itstool scons iniparser libestr libfastjson liblogging \
+	   libmaxminddb libart-lgpl libao libtasn1 libsrtp libidn fribidi yasm \
+	   unzip cmocka cjson findutils  liblockfile \
 	   $KERNEL_PKG ; do
 
        if [ "$ITER" -eq "${2:-1000}" ]; then exit 0; else ITER=$(( ITER + 1 )); fi 
