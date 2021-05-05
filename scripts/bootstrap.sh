@@ -118,8 +118,7 @@ for PKG in fortify-headers linux-headers musl libc-dev pkgconf zlib \
 	   yajl openresolv font-util libwebp ivykis lz4 cppunit gawk cmph jpeg \
 	   re2c libnet itstool scons iniparser libestr libfastjson liblogging \
 	   libmaxminddb libart-lgpl libao libtasn1 libsrtp libidn fribidi yasm \
-	   unzip cmocka cjson findutils  liblockfile \
-	   $KERNEL_PKG ; do
+	   unzip cmocka cjson findutils  liblockfile ; do
 
        if [ "$ITER" -eq "${2:-1000}" ]; then exit 0; else ITER=$(( ITER + 1 )); fi 
 	EXTRADEPENDS_TARGET="$EXTRADEPENDS_TARGET"  EXTRADEPENDS_BUILD="libatomic gcc-$TARGET_ARCH g++-$TARGET_ARCH" \
