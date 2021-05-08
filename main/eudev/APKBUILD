@@ -42,11 +42,14 @@ build() {
 		--exec-prefix=/ \
 		--bindir=/bin
 	make
-	cp /bin/true src/udev/udevadm
 }
 
 check() {
 	make check
+}
+
+postcheck() {
+	return 0
 }
 
 package() {

@@ -37,6 +37,10 @@ check() {
 	make check
 }
 
+postcheck() {
+        return 0
+}
+
 package() {
 	make DESTDIR="$pkgdir" prefix=/usr install
 }

@@ -29,4 +29,8 @@ package() {
 	make -C build DESTDIR="$pkgdir" install
 }
 
+postcheck() {
+        return 0
+}
+
 sha512sums="637496c549a4a150cfaeb5d4913de512262145ecd7d455d7b7f3dd68f9416e47d931a6c1efd8a17d931e4baf4a8a9f2ed21124664003b123b6f89ca4abf263ed  doxygen-1.9.1.src.tar.gz"

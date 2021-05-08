@@ -44,6 +44,7 @@ build() {
 	armv7)    export GOARCH="arm" GOARM="7" ;;
 	x86)      export GOARCH="386" GO386="387" ;;
 	x86_64)   export GOARCH="amd64" ;;
+	riscv64)  export GOARCH="riscv64" ;;
 	*)        return 1 ;;
 	esac
 

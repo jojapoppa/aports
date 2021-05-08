@@ -15,6 +15,7 @@ source="https://www.x.org/releases/individual/lib/libXv-$pkgver.tar.bz2
 builddir="$srcdir"/libXv-$pkgver
 build() {
 	cd "$builddir"
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

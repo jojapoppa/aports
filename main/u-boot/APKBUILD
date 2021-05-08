@@ -45,6 +45,11 @@ aarch64) board_configs="
 	pine64:pine64-lts
 	pinebook:pinebook
 	";;
+riscv64) board_configs="
+	qemu:qemu-riscv64
+        qemu:qemu-riscv64_spl
+        qemu:qemu-riscv64_smode
+        ";;
 esac
 
 _allboards=""

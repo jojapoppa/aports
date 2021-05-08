@@ -1,0 +1,29 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = 1.7
+-ACLOCAL_AMFLAGS = -I m4
++# ACLOCAL_AMFLAGS = -I m4
+ # Top-level Makefile.am for SASL
+ # Rob Earhart
+ #
+@@ -44,7 +44,7 @@
+ #
+ ################################################################
+ 
+-ACLOCAL_AMFLAGS = -I config
++# ACLOCAL_AMFLAGS = -I config
+ 
+ if SASLAUTHD
+ SAD = saslauthd
+--- a/configure.ac
++++ b/configure.ac
+@@ -44,7 +44,7 @@
+ 
+ AC_PREREQ(2.63)
+ 
+-AC_CONFIG_MACRO_DIR([config])
++dnl AC_CONFIG_MACRO_DIR([config])
+ 
+ dnl
+ dnl REMINDER: When changing the version number here, please also update

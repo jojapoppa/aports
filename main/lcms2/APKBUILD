@@ -21,6 +21,7 @@ builddir="$srcdir/Little-CMS-$pkgver"
 #     - CVE-2016-10165
 
 build() {
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

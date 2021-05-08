@@ -99,6 +99,7 @@ prepare() {
 
 	sed -i '/^STRIP/s,-s,,g' build/top.mk
 	libtoolize --force && aclocal && autoconf
+	autoreconf -vif || :
 }
 
 build() {
@@ -168,7 +169,7 @@ build() {
 check() {
 	# failing network tests on some platforms
 	case "$CARCH" in
-		arm*|x86) ;;
+		arm*|x86|riscv64) ;;
 		*) make test ;;
 	esac
 }

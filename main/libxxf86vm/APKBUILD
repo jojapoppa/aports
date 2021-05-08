@@ -17,6 +17,7 @@ builddir="$srcdir"/libXxf86vm-$pkgver
 
 build() {
 	cd "$builddir"
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

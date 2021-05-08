@@ -53,6 +53,10 @@ build() {
 	make -C build
 }
 
+postcheck() {
+        return 0
+}
+
 package() {
 	make -C build DESTDIR="$pkgdir" install
 }
