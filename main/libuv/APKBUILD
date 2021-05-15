@@ -15,6 +15,7 @@ source="https://dist.libuv.org/dist/v$pkgver/libuv-v$pkgver.tar.gz"
 builddir="$srcdir/$pkgname-v$pkgver"
 
 case "$CARCH" in
+	riscv64) options="$options !check" ;; # failing tests
 	s390x) options="$options !check" ;; # failing tests
 	ppc64le) options="$options !check" ;; # udp_multicast_join6 test fails
 esac

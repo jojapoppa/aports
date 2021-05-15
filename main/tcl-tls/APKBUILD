@@ -13,6 +13,7 @@ source="https://core.tcl.tk/tcltls/uv/tcltls-$pkgver.tar.gz"
 builddir="$srcdir/tcltls-$pkgver"
 
 build() {
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

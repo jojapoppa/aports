@@ -21,6 +21,7 @@ build() {
 	chmod +w */config.guess
 	update_config_guess
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	cp /usr/share/abuild/config.sub FileList
 	make config && make
 }
 

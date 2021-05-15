@@ -17,6 +17,7 @@ builddir="$srcdir"/$pkgname-$pkgver
 build() {
 	export LDFLAGS="$LDFLAGS -lvanessa_logger"
 	cd "$builddir"
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

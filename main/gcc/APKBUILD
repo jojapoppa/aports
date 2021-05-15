@@ -93,7 +93,7 @@ fi
 
 # GDC hasn't been ported to PowerPC
 # See libphobos/configure.tgt in GCC sources for supported targets
-[ "$CARCH" = ppc64le ] && LANG_D=false
+[ "$CARCH" = ppc64le -o "$CARCH" = riscv64 ] && LANG_D=false
 
 # libitm has TEXTRELs in ARM build, so disable for now
 case "$CTARGET_ARCH" in

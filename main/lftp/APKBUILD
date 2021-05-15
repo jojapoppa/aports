@@ -17,6 +17,7 @@ source="https://lftp.yar.ru/ftp/lftp-$pkgver.tar.xz"
 #     - CVE-2018-10916
 
 build() {
+	cp /usr/share/abuild/config.sub build-aux
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

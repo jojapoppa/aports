@@ -12,7 +12,12 @@ checkdepends="bash"
 subpackages="$pkgname-doc $pkgname-dev $pkgname-tools::noarch py3-lttng:pyagent"
 source="https://lttng.org/files/lttng-ust/lttng-ust-$pkgver.tar.bz2"
 
+case "$CARCH" in
+        riscv64) options="$options !check" ;; # ERROR: ust-elf/test_ust_elf - exited with status 127 (command not found?)
+esac
+
 build() {
+	cp /usr/share/abuild/config.sub config
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

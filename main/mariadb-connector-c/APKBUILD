@@ -15,6 +15,7 @@ source="https://downloads.mariadb.org/interstitial/connector-c-$pkgver/mariadb-c
 builddir="$srcdir/mariadb-connector-c-$pkgver-src"
 
 build() {
+	sed -ie 's#END(#ENDIF(#' cmake/ConnectorName.cmake
 	if [ "$CBUILD" != "$CHOST" ]; then
 		CMAKE_CROSSOPTS="-DCMAKE_SYSTEM_NAME=Linux -DCMAKE_HOST_SYSTEM_NAME=Linux"
 	fi

@@ -4,7 +4,7 @@ pkgver=1.0.18
 pkgrel=1
 pkgdesc="User-space access to Linux Kernel SCTP"
 url="http://lksctp.sourceforge.net"
-arch="all"
+arch="all !riscv64"
 options="!check"  # sctp_connectx in v4test fails on kernel 4.14
 license="GPL-2.0-only AND LGPL-2.1-or-later"
 makedepends="libtool automake autoconf linux-headers"
@@ -23,6 +23,8 @@ prepare() {
 
 build() {
 	cd "$builddir"
+	echo >> configure
+	echo fi >> configure
 	./configure \
 		--prefix=/usr
 	make

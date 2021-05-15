@@ -71,7 +71,7 @@ pkgver=14.16.1
 pkgrel=2
 pkgdesc="JavaScript runtime built on V8 engine - LTS version"
 url="https://nodejs.org/"
-arch="all !mips64 !mips64el"
+arch="all !mips64 !mips64el !riscv64"
 license="MIT"
 depends="ca-certificates nghttp2-libs>=1.41"
 makedepends="
@@ -113,6 +113,7 @@ build() {
 	export CFLAGS="${CFLAGS/-Os/-O2} $common_flags"
 	export CXXFLAGS="${CXXFLAGS/-Os/-O2} $common_flags"
 	export CPPFLAGS="${CPPFLAGS/-Os/-O2} $common_flags"
+	export LDFLAGS="${LDFLAGS} -m64"
 
 	case "$CARCH" in
 	mips*) _carchflags="--with-mips-arch-variant=r1 --with-mips-float-abi=soft";;

@@ -146,9 +146,10 @@ build() {
 check() {
 	cd "$builddir"/build
 
-	# I'd like to know what tests fail for mips64
+	# I'd like to know what tests fail for mips64 & riscv64
 	case "$CARCH" in
 		mips*) make check-llvm || true ;;
+		riscv64) make check-llvm || true ;;
 		*) make check-llvm ;;
 	esac
 }

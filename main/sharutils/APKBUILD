@@ -16,6 +16,7 @@ source="https://ftp.gnu.org/gnu/sharutils/sharutils-$pkgver.tar.xz
 	"
 
 build() {
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

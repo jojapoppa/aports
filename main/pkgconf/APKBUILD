@@ -13,6 +13,7 @@ source="https://distfiles.dereferenced.org/pkgconf/pkgconf-$pkgver.tar.xz"
 checkdepends="kyua atf"
 
 build() {
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=riscv64-linux-musl \

@@ -15,6 +15,9 @@ case "$CARCH" in
 esac
 
 build() {
+	cp /usr/share/abuild/config.sub .
+	export LDFLAGS=-latomic
+	export CFLAGS=-latomic
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \

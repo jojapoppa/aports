@@ -90,9 +90,11 @@ prepare() {
 }
 
 build() {
+	cp /usr/share/abuild/config.sub "$builddir"
 	cp -a "$builddir" "$builddir-ldap"
 
 	_configure
+	cp /usr/share/abuild/config.sub /usr/share/abuild/config.guess bind/bind-*
 	make -j1 -C bind && make
 
 	cd "$builddir-ldap"
@@ -100,6 +102,7 @@ build() {
 		--with-ldap \
 		--with-ldapcrypto \
 		--with-ldap-gssapi
+	cp /usr/share/abuild/config.sub /usr/share/abuild/config.guess bind/bind-*
 	make -j1 -C bind && make
 }
 

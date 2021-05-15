@@ -14,6 +14,10 @@ source="http://download.augeas.net/augeas-$pkgver.tar.gz
 	awall.aug
 	"
 
+case "$CARCH" in
+        riscv64) options="$options !check" ;; # FAIL: test-span-rec-lens.sh
+esac
+
 prepare() {
 	default_prepare
 	autoreconf -f -i

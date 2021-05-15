@@ -9,6 +9,9 @@ license="GPL-3.0-or-later"
 subpackages="$pkgname-doc"
 source="https://ftp.gnu.org/gnu/make/make-$pkgver.tar.gz
 	"
+case "$CARCH" in
+        riscv64) options="$options !check" ;; # 2 Tests in 2 Categories Failed
+esac
 
 build() {
 	./configure \

@@ -1,6 +1,7 @@
 # Maintainer: Jakub Jirutka <jakub@jirutka.cz>
 # Contributor: G.J.R. Timmer <gjr.timmer@gmail.com>
 # Contributor: Jakub Jirutka <jakub@jirutka.cz>
+set -x
 pkgname=postgresql
 pkgver=13.2
 pkgrel=4
@@ -113,6 +114,10 @@ build() {
 	export CFLAGS="${CFLAGS/-Os/-O2}"
 	export CPPFLAGS="${CPPFLAGS/-Os/-O2}"
 
+	# when disable-spinlocks is no longer required - check postgresql-bdr package
+	case "$CBUILD" in
+		*riscv64*) CONFIGURE_EXTRA_FLAGS=--disable-spinlocks ;;
+        esac
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \
@@ -128,7 +133,7 @@ build() {
 		--with-perl \
 		--with-python \
 		--with-icu \
-		--with-tcl
+		--with-tcl $CONFIGURE_EXTRA_FLAGS
 	make world
 }
 

@@ -23,6 +23,7 @@ prepare() {
 build() {
 	cd "$builddir"
 	# seems like this makefile does not respect DESTDIR
+	cp /usr/share/abuild/config.sub .
 	./configure \
 		--build=$CBUILD \
 		--host=$CHOST \
