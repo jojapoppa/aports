@@ -109,7 +109,7 @@ for PKG in fortify-headers linux-headers musl libc-dev pkgconf zlib \
 	   openssl ca-certificates libmd \
 	   gmp mpfr4 mpc1 isl22 cloog libucontext binutils gcc \
 	   libbsd libretls busybox busybox-initscripts make \
-	   apk-tools file \
+	   apk-tools file utmps-dev utmps-static skalibs-static \
 	   openrc alpine-conf alpine-baselayout alpine-keys alpine-base patch build-base \
 	   attr libcap acl fakeroot tar \
 	   lzip abuild ncurses libedit openssh \
